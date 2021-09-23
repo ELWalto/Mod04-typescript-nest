@@ -5,22 +5,23 @@ import { UpdateProductDto } from './dto/update-product.dto';
 
 @Injectable()
 export class ProductService {
-   constructor (private readonly prisma: PrismaService){}
-
+  constructor (private readonly prisma: PrismaService) {}
 
   create(createProductDto: CreateProductDto) {
     return 'This action adds a new product';
   }
 
   findAll() {
+    // return `This action returns all product`;
     return this.prisma.product.findMany();
   }
 
   findOne(id: number) {
+    // return `This action returns a #${id} product`;
     return this.prisma.product.findUnique(
       {
-      where:  {id}
-    });
+        where: {id}
+      });
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
