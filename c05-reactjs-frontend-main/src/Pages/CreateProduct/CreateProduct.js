@@ -15,11 +15,11 @@ export default function CreateProduct() {
         const payload = {
             name,
             price,
-            images:[
+            images: [
                 {
                     url: imageUrl,
-            },
-        ]
+                },
+            ],
         };
 
         // Faz uma requisição no backend
@@ -27,7 +27,6 @@ export default function CreateProduct() {
             Api.createProductUrl(),
             payload
         );
-        
 
         console.log({ response });
     };
