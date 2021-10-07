@@ -1,23 +1,36 @@
 // React
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 
 // Pages
-import { Home } from "../src/Pages/Home/Home";
+import { Home } from "./Pages/Home/Home";
+import CreateProduct from "./Pages/CreateProduct/CreateProduct";
+import ViewProduct from "./Pages/ViewProduct/ViewProduct";
 
 // CSS
 import "./App.css";
-import CreateProduct from "../src/Pages/CreateProduct/CreateProduct";
+import "./styles/form.css";
+import "./styles/card.css";
 
 export function App() {
     return (
         <div className="App">
-            <header className="App-header">Product App</header>
+            <header className="App-header">
+                Product App
+                <br />
+                <Link to="/">Home</Link>
+                <br />
+                <Link to="/product/create">Create</Link>
+                <br />
+                <br />
+            </header>
 
             <div className="content">
                 <Switch>
                     <Route path="/" exact={true} component={Home} />
 
                     <Route path="/product/create" component={CreateProduct} />
+
+                    <Route path="/product/view/:id" component={ViewProduct} />
                 </Switch>
             </div>
         </div>
