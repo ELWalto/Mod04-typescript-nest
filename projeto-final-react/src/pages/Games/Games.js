@@ -1,5 +1,5 @@
 import React from "react";
-import { Api } from "../../Api/api";
+import { Api } from "../../Api/Api";
 
 
 export default function CreateGames () {

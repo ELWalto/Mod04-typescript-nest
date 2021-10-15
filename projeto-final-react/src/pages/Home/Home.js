@@ -1,11 +1,15 @@
 import React from "react"
+import { gamesList } from "../../components/GamesList/gamesList"
 
+const Home = () => {
 
-export function Home() {
-    return(
+    return (
         <div>
-            <h1>Xbox Live</h1>
-            <gamesList/>
+            <h2>Xbox Live Clone (with PS4 Games)</h2>
+            <h3>Games</h3>
+            <gameList/>
         </div>
     )
 }
+
+export default Home

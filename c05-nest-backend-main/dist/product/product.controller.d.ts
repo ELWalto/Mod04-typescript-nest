@@ -4,29 +4,9 @@ import { UpdateProductDto } from './dto/update-product.dto';
 export declare class ProductController {
     private readonly productService;
     constructor(productService: ProductService);
-    create(createProductDto: CreateProductDto): import(".prisma/client").Prisma.Prisma__ProductClient<import(".prisma/client").Product & {
-        images: {
-            url: string;
-            id: number;
-        }[];
-    }>;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Product & {
-        images: {
-            url: string;
-            id: number;
-        }[];
-    })[]>;
-    findOne(id: string): import(".prisma/client").Prisma.Prisma__ProductClient<import(".prisma/client").Product & {
-        images: {
-            url: string;
-            id: number;
-        }[];
-    }>;
-    update(id: string, updateProductDto: UpdateProductDto): import(".prisma/client").Prisma.Prisma__ProductClient<import(".prisma/client").Product & {
-        images: {
-            url: string;
-            id: number;
-        }[];
-    }>;
-    remove(id: string): import(".prisma/client").Prisma.Prisma__ProductClient<import(".prisma/client").Product>;
+    create(createProductDto: CreateProductDto): import(".prisma/client").Prisma.Prisma__ProductClient<import(".prisma/client").Product & {}>;
+    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Product & {})[]>;
+    findOne(id: number): import(".prisma/client").Prisma.Prisma__ProductClient<import(".prisma/client").Product & {}>;
+    update(id: number, updateProductDto: UpdateProductDto): import(".prisma/client").Prisma.Prisma__ProductClient<import(".prisma/client").Product & {}>;
+    remove(id: number): void;
 }

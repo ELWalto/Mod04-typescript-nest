@@ -9,10 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateImageDto = exports.CreateProductDto = void 0;
-const class_validator_1 = require("class-validator");
-const product_entity_1 = require("../entities/product.entity");
+exports.CreateProductDto = void 0;
 const class_transformer_1 = require("class-transformer");
+const class_validator_1 = require("class-validator");
+const create_image_dto_1 = require("../../image/dto/create-image.dto");
+const product_entity_1 = require("../entities/product.entity");
 class CreateProductDto extends product_entity_1.Product {
 }
 __decorate([
@@ -27,13 +28,16 @@ __decorate([
 ], CreateProductDto.prototype, "price", void 0);
 __decorate([
     (0, class_validator_1.ValidateNested)({ each: true }),
-    (0, class_transformer_1.Type)(() => CreateImageDto),
+    (0, class_transformer_1.Type)(() => create_image_dto_1.CreateImageDto),
     (0, class_validator_1.IsArray)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Array)
 ], CreateProductDto.prototype, "images", void 0);
+__decorate([
+    (0, class_validator_1.IsInt)({ each: true }),
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.ArrayNotEmpty)(),
+    __metadata("design:type", Array)
+], CreateProductDto.prototype, "categoriesIds", void 0);
 exports.CreateProductDto = CreateProductDto;
-class CreateImageDto {
-}
-exports.CreateImageDto = CreateImageDto;
 //# sourceMappingURL=create-product.dto.js.map

@@ -16,7 +16,7 @@ let ProductModule = class ProductModule {
 ProductModule = __decorate([
     (0, common_1.Module)({
         controllers: [product_controller_1.ProductController],
-        providers: [product_service_1.ProductService, prisma_service_1.PrismaService]
+        providers: [product_service_1.ProductService, prisma_service_1.PrismaService],
     })
 ], ProductModule);
 exports.ProductModule = ProductModule;

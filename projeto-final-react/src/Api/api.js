@@ -1,14 +1,12 @@
+const Api = {
+  baseUrl: "http://localhost:3000/",
 
-export const api =  {
-    baseUrl: 'https://localhost:3000/',
+  readAllUrl: () => Api.baseUrl + "/games",
 
-    readAllUrl: () => Api.baseUrl + "/games",
-    
-    buildApiGetRequest: url =>
-        fetch(url, {
-            method: "GET",
-        }),
+  buildApiGetRequest: (url) =>
+    fetch(url, {
+      method: "GET",
+    }),
+};
 
-}
-
-
+export default Api

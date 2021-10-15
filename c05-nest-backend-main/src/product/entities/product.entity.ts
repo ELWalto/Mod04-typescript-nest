@@ -1,10 +1,10 @@
-import { Image } from "../../image/entities/image.entitiy";
+import { Category } from 'src/category/entities/category.entity';
+import { Image } from 'src/image/entities/image.entity';
 
 export class Product {
-    id?: number;
-    name: string;
-    price?: number;
-    images?: Image[];
+  id?: number;
+  name: string;
+  price?: number;
+  images?: Image[];
+  categories: Category[];
 }
-
-

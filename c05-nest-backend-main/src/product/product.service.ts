@@ -6,62 +6,81 @@ import { UpdateProductDto } from './dto/update-product.dto';
 
 @Injectable()
 export class ProductService {
-  constructor (private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  private readonly _include = {
+  private readonly _include: Prisma.ProductInclude = {
     images: {
       select: {
-        id: false,
-        url: true
-      }
+        id: true,
+        url: true,
+      },
     },
+    categories: true,
   };
 
-
-
   create(dto: CreateProductDto) {
+    const categoriesIds = dto.categoriesIds;
+
+    delete dto.categoriesIds;
+
     const data: Prisma.ProductCreateInput = {
-    //return 'This action adds a new product';
-    ...dto,
-    images:{
-      create: dto.images,
-    },
+      ...dto,
+      images: {
+        create: dto.images,
+      },
+      categories: {
+        connect: categoriesIds.map((categoryId) => ({ id: categoryId })),
+      },
     };
+
     return this.prisma.product.create({
       data,
-      include:this._include,
+      include: this._include,
     });
-    }
+  }
 
   findAll() {
-    // return `This action returns all product`;
     return this.prisma.product.findMany({
       include: this._include,
     });
   }
 
   findOne(id: number) {
-    // return `This action returns a #${id} product`;
-    return this.prisma.product.findUnique(
-      {
-        where: {id},
-        include: this._include,
-      });
+    return this.prisma.product.findUnique({
+      where: { id },
+      include: this._include,
+    });
   }
 
-  update(id: number, data: UpdateProductDto) {
-    // return `This action updates a #${id} product`;
+  update(id: number, dto: UpdateProductDto) {
+    const categoriesIds = dto.categoriesIds;
+
+    delete dto.categoriesIds;
+
+    const data: Prisma.ProductUpdateInput = {
+      ...dto,
+      images: {
+        upsert: dto.images.map((updateImageDto) => ({
+          where: { id: updateImageDto.id },
+          update: { url: updateImageDto.url },
+          create: { url: updateImageDto.url },
+        })),
+      },
+      categories: {
+        connect: categoriesIds?.map((categoryId) => ({ id: categoryId })) || [],
+      },
+    };
+
     return this.prisma.product.update({
-      where: {id},
+      where: { id },
       data,
       include: this._include,
     });
   }
 
   remove(id: number) {
-    // return `This action removes a #${id} product`;
-    return this.prisma.product.delete({
-      where: {id},
+    this.prisma.product.delete({
+      where: { id },
     });
   }
 }

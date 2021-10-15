@@ -1,4 +1,4 @@
-import { api } from "../../Api/api";
+import { Api } from "../../Api/Api";
 
 export const gamesList = () => {
 

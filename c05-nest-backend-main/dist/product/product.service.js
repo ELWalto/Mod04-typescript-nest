@@ -18,15 +18,20 @@ let ProductService = class ProductService {
         this._include = {
             images: {
                 select: {
-                    id: false,
-                    url: true
-                }
+                    id: true,
+                    url: true,
+                },
             },
+            categories: true,
         };
     }
     create(dto) {
+        const categoriesIds = dto.categoriesIds;
+        delete dto.categoriesIds;
         const data = Object.assign(Object.assign({}, dto), { images: {
                 create: dto.images,
+            }, categories: {
+                connect: categoriesIds.map((categoryId) => ({ id: categoryId })),
             } });
         return this.prisma.product.create({
             data,
@@ -44,7 +49,18 @@ let ProductService = class ProductService {
             include: this._include,
         });
     }
-    update(id, data) {
+    update(id, dto) {
+        const categoriesIds = dto.categoriesIds;
+        delete dto.categoriesIds;
+        const data = Object.assign(Object.assign({}, dto), { images: {
+                upsert: dto.images.map((updateImageDto) => ({
+                    where: { id: updateImageDto.id },
+                    update: { url: updateImageDto.url },
+                    create: { url: updateImageDto.url },
+                })),
+            }, categories: {
+                connect: (categoriesIds === null || categoriesIds === void 0 ? void 0 : categoriesIds.map((categoryId) => ({ id: categoryId }))) || [],
+            } });
         return this.prisma.product.update({
             where: { id },
             data,
@@ -52,7 +68,7 @@ let ProductService = class ProductService {
         });
     }
     remove(id) {
-        return this.prisma.product.delete({
+        this.prisma.product.delete({
             where: { id },
         });
     }

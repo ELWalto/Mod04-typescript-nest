@@ -6,29 +6,9 @@ export declare class ProductService {
     private readonly prisma;
     constructor(prisma: PrismaService);
     private readonly _include;
-    create(dto: CreateProductDto): Prisma.Prisma__ProductClient<import(".prisma/client").Product & {
-        images: {
-            url: string;
-            id: number;
-        }[];
-    }>;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Product & {
-        images: {
-            url: string;
-            id: number;
-        }[];
-    })[]>;
-    findOne(id: number): Prisma.Prisma__ProductClient<import(".prisma/client").Product & {
-        images: {
-            url: string;
-            id: number;
-        }[];
-    }>;
-    update(id: number, data: UpdateProductDto): Prisma.Prisma__ProductClient<import(".prisma/client").Product & {
-        images: {
-            url: string;
-            id: number;
-        }[];
-    }>;
-    remove(id: number): Prisma.Prisma__ProductClient<import(".prisma/client").Product>;
+    create(dto: CreateProductDto): Prisma.Prisma__ProductClient<import(".prisma/client").Product & {}>;
+    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Product & {})[]>;
+    findOne(id: number): Prisma.Prisma__ProductClient<import(".prisma/client").Product & {}>;
+    update(id: number, dto: UpdateProductDto): Prisma.Prisma__ProductClient<import(".prisma/client").Product & {}>;
+    remove(id: number): void;
 }
