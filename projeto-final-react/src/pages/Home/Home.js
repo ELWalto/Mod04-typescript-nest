@@ -1,13 +1,12 @@
-import React from "react"
-import { gamesList } from "../../components/GamesList/gamesList"
+import './Home.scss'
+import React from 'react'
+import GamesList from '../../components/structure/GamesList/GamesList';
 
 const Home = () => {
-
     return (
         <div>
-            <h2>Xbox Live Clone (with PS4 Games)</h2>
-            <h3>Games</h3>
-            <gameList/>
+            <GamesList />
+    
         </div>
     )
 }
