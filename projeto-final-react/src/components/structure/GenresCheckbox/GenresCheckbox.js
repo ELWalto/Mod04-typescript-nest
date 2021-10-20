@@ -6,7 +6,7 @@ import {
     FormLabel,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Api } from "../../../api/api";
+import { Api } from "../../../Api/api";
 import NewGenre from "../NewGenre/NewGenre";
 
 const GenresCheckbox = ({ onGenresChecked }) => {

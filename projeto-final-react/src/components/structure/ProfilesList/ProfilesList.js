@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Api } from "../../../api/api";
+import { Api } from "../../../Api/api";
 import ProfileCard from "../ProfileCard/ProfileCard";
 import './ProfileList.scss'
 const ProfilesList = ({ userId }) => {

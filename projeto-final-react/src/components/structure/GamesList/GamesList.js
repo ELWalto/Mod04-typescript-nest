@@ -1,6 +1,6 @@
 import "./GamesList.scss";
 import React, { useEffect, useState } from "react";
-import { Api } from "../../../api/api";
+import { Api } from "../../../Api/api";
 import VideoEmbed from "../VideoEmbed/VideoEmbed";
 import GameCard from "../GameCard/GameCard";
 import ContentLoader from "react-content-loader"

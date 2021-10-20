@@ -4,7 +4,7 @@ import React from "react";
 import { Box, styled } from "@mui/system";
 import { Button, TextField } from "@mui/material";
 import GenresCheckbox from "../../components/structure/GenresCheckbox/GenresCheckbox";
-import { Api } from "../../api/api";
+import { Api } from "../../Api/api";
 
 const NewGame = (props) => {
   const handleGenresCheck = (checked) => {

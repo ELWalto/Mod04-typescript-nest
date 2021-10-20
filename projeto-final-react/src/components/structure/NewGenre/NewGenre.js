@@ -1,7 +1,7 @@
 import { Button, Popover, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { Api } from "../../../api/api";
+import { Api } from "../../../Api/api";
 
 const NewGenre = ({ setNewGenres }) => {
     const [anchorEl, setAnchorEl] = useState(null);
